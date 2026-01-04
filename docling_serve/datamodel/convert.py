@@ -30,6 +30,22 @@ class ConvertDocumentsRequestOptions(ConvertDocumentsOptions):
         ),
     ] = ocr_engines_enum(EasyOcrOptions.kind)  # type: ignore
 
+    ocr_lang: Annotated[
+        list[str] | None,
+        Field(
+            description=(
+                "List of languages used by the OCR engine. Note that each OCR engine has different values "
+                "for the language names. String or list of strings. Optional, defaults to empty. "
+                "EasyOCR supported languages: af, az, bs, cs, cy, da, de, en, es, et, fr, ga, hr, hu, id, "
+                "is, it, ku, la, lt, lv, mi, ms, mt, nl, no, oc, pi, pl, pt, ro, rs_latin, sk, sl, sq, "
+                "sv, sw, tl, tr, uz, vi, ar, fa, ug, ur, ru, rs_cyrillic, be, bg, uk, mn, abq, ady, kbd, "
+                "ava, dar, inh, che, lbe, lez, tab, tjk, hi, mr, ne, bh, mai, ang, bho, mah, sck, new, "
+                "gom, sa, bgc, bn, as, mni, th, ch_sim, ch_tra, ja, ko, ta, te, kn"
+            ),
+            examples=[["en", "fr", "de", "es"]],
+        ),
+    ] = None
+
     document_timeout: Annotated[
         float,
         Field(
